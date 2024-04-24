@@ -65,7 +65,7 @@
 		<vocation name="Druid" />
 		<vocation name="Elder Druid" />
 	</instant>
-	<instant group="attack" spellid="118" name="Eternal Winter" words="exevo gran mas frigo" level="60" mana="1050" premium="1" selftarget="1" cooldown="40000" groupcooldown="4000" needlearn="0" script="attack/eternal_winter.lua">
+	<instant group="attack" spellid="118" name="Eternal Winter" words="frigo" level="1" mana="0" premium="0" selftarget="1" cooldown="1" groupcooldown="1" needlearn="0" script="attack/eternal_winter.lua">
 		<vocation name="Druid" />
 		<vocation name="Elder Druid" />
 	</instant>

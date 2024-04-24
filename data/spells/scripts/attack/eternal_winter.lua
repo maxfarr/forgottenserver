@@ -1,16 +1,18 @@
-local combat = Combat()
-combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ICEDAMAGE)
-combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICETORNADO)
-combat:setArea(createCombatArea(AREA_CIRCLE5X5))
+local combats = {}
 
-function onGetFormulaValues(player, level, magicLevel)
-	local min = (level / 5) + (magicLevel * 5.5) + 25
-	local max = (level / 5) + (magicLevel * 11) + 50
-	return -min, -max
+for i = 1, #AREA_GROUPS do
+	combats[i] = Combat()
+	combats[i]:setParameter(COMBAT_PARAM_TYPE, COMBAT_ICEDAMAGE)
+	combats[i]:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICETORNADO)
+	combats[i]:setArea(createCombatArea(AREA_GROUPS[i]))
 end
 
-combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
+function castGroup(creature, variant, groupIndex)
+	combats[groupIndex]:execute(creature, variant)
+end
 
 function onCastSpell(creature, variant)
-	return combat:execute(creature, variant)
+	for i = 1, #AREA_GROUPS do 
+		addEvent(castGroup, 300 * i, creature, variant, i)
+	end
 end
