@@ -1,5 +1,5 @@
-local MAX_DASH_DIST = 5
-local DASH_DELAY_MS = 100
+local MAX_DASH_DIST = 6
+local DASH_DELAY_MS = 50
 
 function calculate_pos_offset(direction, pos, offset)
     if direction == 0 then
